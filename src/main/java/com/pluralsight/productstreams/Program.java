@@ -53,26 +53,32 @@ public class Program {
 
     // TASK 2: the total of every product's price
     private static BigDecimal getTotalInventoryValue(List<Product> products) {
-        BigDecimal total = BigDecimal.ZERO;
-
-        for (Product product : products) {
-            total = total.add(product.getPrice());
-        }
-
-        return total;
+//        BigDecimal total = BigDecimal.ZERO;
+//
+//        for (Product product : products) {
+//            total = total.add(product.getPrice());
+//        }
+//
+//        return total;
+        return products.stream()
+                .map(product -> product.getPrice())
+                .reduce(BigDecimal.ZERO, (total, price) -> total.add(price));
     }
 
     // TASK 3: how many products are in one category
     private static long countProductsInCategory(List<Product> products, String category) {
-        long count = 0;
-
-        for (Product product : products) {
-            if (product.getCategory().equalsIgnoreCase(category)) {
-                count++;
-            }
-        }
-
-        return count;
+//        long count = 0;
+//
+//        for (Product product : products) {
+//            if (product.getCategory().equalsIgnoreCase(category)) {
+//                count++;
+//            }
+//        }
+//
+//        return count;
+        return products.stream()
+                .filter(product -> product.getCategory().equalsIgnoreCase(category))
+                .count();
     }
 
     // TASK 4: a list of just the prices
