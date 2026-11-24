@@ -83,13 +83,16 @@ public class Program {
 
     // TASK 4: a list of just the prices
     private static List<BigDecimal> getPrices(List<Product> products) {
-        List<BigDecimal> prices = new ArrayList<>();
-
-        for (Product product : products) {
-            prices.add(product.getPrice());
-        }
-
-        return prices;
+//        List<BigDecimal> prices = new ArrayList<>();
+//
+//        for (Product product : products) {
+//            prices.add(product.getPrice());
+//        }
+//
+//        return prices;
+    return products.stream()
+            .map(product -> product.getPrice())
+            .toList();
     }
 
     // TASK 5: print each product
