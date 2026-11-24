@@ -37,15 +37,18 @@ public class Program {
 
     // TASK 1: the products in one category
     private static List<Product> getProductsByCategory(List<Product> products, String category) {
-        List<Product> matches = new ArrayList<>();
-
-        for (Product product : products) {
-            if (product.getCategory().equalsIgnoreCase(category)) {
-                matches.add(product);
-            }
-        }
-
-        return matches;
+//        List<Product> matches = new ArrayList<>();
+//
+//        for (Product product : products) {
+//            if (product.getCategory().equalsIgnoreCase(category)) {
+//                matches.add(product);
+//            }
+//        }
+//
+//        return matches;
+        return products.stream()
+                .filter(product -> product.getCategory().equalsIgnoreCase(category))
+                .toList();
     }
 
     // TASK 2: the total of every product's price
