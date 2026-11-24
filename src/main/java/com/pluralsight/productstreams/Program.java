@@ -37,11 +37,15 @@ public class Program {
 
     // TASK 1: the products in one category
     private static List<Product> getProductsByCategory(List<Product> products, String category) {
-        // STEP A (loop): make an empty list, loop through products, and add each one
-        //   whose category matches (equalsIgnoreCase). Return the list.
-        // STEP B (stream): products.stream(), then .filter(...), then .toList()
+        List<Product> matches = new ArrayList<>();
 
-        return new ArrayList<>(); // replace this line
+        for (Product product : products) {
+            if (product.getCategory().equalsIgnoreCase(category)) {
+                matches.add(product);
+            }
+        }
+
+        return matches;
     }
 
     // TASK 2: the total of every product's price
