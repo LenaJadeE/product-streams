@@ -117,6 +117,13 @@ public class Program {
         //   is less than limit (compareTo)
         // STEP B (stream): .filter(...), then .map(...) each product to its name, then .toList()
 
+        List<String> names = new ArrayList<>();
+        for (Product product : products) {
+            if (product.getPrice().compareTo(limit) < 0) {
+                names.add(product.getName());
+            }
+        }
+
         return new ArrayList<>(); // replace this line
     }
 
