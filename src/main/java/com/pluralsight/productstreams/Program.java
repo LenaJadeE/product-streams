@@ -3,6 +3,7 @@ package com.pluralsight.productstreams;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Program {
@@ -127,7 +128,7 @@ public class Program {
         return products.stream()
                 .filter(product -> product.getPrice().compareTo(limit) < 0)
                 .map(product -> product.getName())
-                .toList(); // replace this line
+                .toList();
     }
 
     // TASK 7 (optional): the products from cheapest to most expensive
@@ -135,7 +136,10 @@ public class Program {
         // No loop for this one: sorting with a loop is a lot of work.
         // STEP B (stream): .sorted(Comparator.comparing(...)), then .toList()
 
-        return new ArrayList<>(); // replace this line
+
+        return products.stream()
+                .sorted(Comparator.comparing(product -> product.getPrice()))
+                .toList();
     }
 
     private static List<Product> getInventory() {
